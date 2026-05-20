@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Về chúng tôi | Tech-Zone</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/style.css" />
+</head>
+
+<body>
+
+    <!-- NAVBAR Bootstrap 3 -->
+    <nav class="navbar navbar-default navbar-fixed-top" id="mainNav">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbarMain">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="index.html">
+                    <img src="images/logoTechZone.png" alt="Tech-Zone" style="height:42px;width:auto;">
+                    <span class="brand-name">Tech<span>Zone</span></span>
+                </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbarMain">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="index.html#about">About</a></li>
+                    <li><a href="index.html#services">Services</a></li>
+                    <li><a href="index.html#portfolio">Portfolio</a></li>
+                    <li><a href="index.html#pricing">Pricing</a></li>
+                    <li><a href="index.html#contact">Contact</a></li>
+                    <li class="nav-auth-show"><a href="#" class="btn-nav-login" data-toggle="modal" data-target="#loginModal">Đăng nhập</a></li>
+                    <li class="nav-auth-show"><a href="#" class="btn-nav-register" data-toggle="modal" data-target="#registerModal">Đăng ký</a></li>
+                    <li class="dropdown nav-user-show" style="display:none;">
+                        <a href="#" class="dropdown-toggle nav-user-info" data-toggle="dropdown" role="button">
+                            <span class="user-avatar-circle">T</span>
+                            <span class="nav-username">User</span>
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-right user-dropdown">
+                            <li class="dropdown-header">Tài khoản của tôi</li>
+                            <li><a href="#"><span class="glyphicon glyphicon-user"></span> Hồ sơ</a></li>
+                            <li><a href="#"><span class="glyphicon glyphicon-shopping-cart"></span> Đơn hàng</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a href="#" id="btnLogout"><span class="glyphicon glyphicon-log-out"></span> Đăng xuất</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- BANNER -->
+    <div
+        style="padding-top:50px; background:linear-gradient(135deg,#eff6ff,#dbeafe); padding-bottom:48px; border-bottom:1px solid var(--border);">
+        <div class="container" style="padding-top:32px;">
+            <span class="section-label">Giới thiệu</span>
+            <h1 class="section-title" style="font-size:44px;">Về <span>Tech-Zone</span></h1>
+            <p style="color:var(--muted); font-size:15px;">Hệ thống bán lẻ điện thoại & điện tử hàng đầu Việt Nam</p>
+            <ol class="breadcrumb" style="background:transparent;padding:8px 0 0;margin:0;">
+                <li><a href="index.html" style="color:var(--accent);">Trang chủ</a></li>
+                <li class="active" style="color:var(--muted);">Về chúng tôi</li>
+            </ol>
+        </div>
+    </div>
+
+    <!-- NỘI DUNG GIỚI THIỆU -->
+    <section style="background:var(--surface); padding:72px 0;">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6" style="margin-bottom:32px;">
+                    <div
+                        style="width:100%;height:360px;background:linear-gradient(135deg,#0f2044,#162a50);border-radius:16px;display:flex;align-items:center;justify-content:center;font-size:96px;border:1px solid var(--border);">
+                        🏪</div>
+                </div>
+                <div class="col-md-6">
+                    <span class="section-label">Câu chuyện của chúng tôi</span>
+                    <h2 class="section-title" style="font-size:32px;">Tech-Zone — Khởi đầu từ <span>đam mê</span> công
+                        nghệ</h2>
+                    <div class="divider"></div>
+                    <p style="color:var(--muted); line-height:1.9; margin-bottom:16px;">
+                        Tech-Zone được thành lập năm 2015 bởi một nhóm kỹ sư và những người yêu công nghệ với sứ mệnh
+                        đơn giản:
+                        mang sản phẩm công nghệ chính hãng đến tay mọi người Việt Nam với giá tốt nhất.
+                    </p>
+                    <p style="color:var(--muted); line-height:1.9; margin-bottom:16px;">
+                        Từ một cửa hàng nhỏ tại Quận 1, TP.HCM, chúng tôi đã phát triển thành hệ thống 50 cửa hàng
+                        trải khắp cả nước, phục vụ hơn 500.000 khách hàng mỗi năm.
+                    </p>
+                    <p style="color:var(--muted); line-height:1.9;">
+                        Triết lý của chúng tôi: <strong style="color:var(--accent);">Khách hàng là trung tâm</strong>.
+                        Mọi quyết định từ chọn hàng, định giá đến dịch vụ hậu mãi đều xuất phát từ lợi ích khách hàng.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer id="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h3 style="font-family:'Rajdhani',sans-serif;color:var(--text);">Tech<span
+                            style="color:var(--accent);">Zone</span></h3>
+                    <p style="color:var(--muted);font-size:14px;margin-top:8px;">Điện thoại & điện tử chính hãng — Giá
+                        tốt — Bảo hành uy tín</p>
+                </div>
+                <div class="col-md-6 text-right">
+                    <div class="social-links" style="justify-content:flex-end;">
+                        <a class="social-btn" href="#"><span class="glyphicon glyphicon-thumbs-up"></span></a>
+                        <a class="social-btn" href="#"><span class="glyphicon glyphicon-retweet"></span></a>
+                        <a class="social-btn" href="#"><span class="glyphicon glyphicon-film"></span></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="container">
+                <p>© 2025 Tech-Zone. Bản quyền thuộc về Tech-Zone Vietnam.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ===== LOGIN MODAL ===== -->
+    <div class="modal fade" id="loginModal" tabindex="-1" role="dialog">
+        <div class="modal-dialog auth-modal-dialog">
+            <div class="modal-content auth-modal-content">
+                <div class="modal-header auth-modal-header">
+                    <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
+                    <h4 class="modal-title">Đăng nhập</h4>
+                    <p>Chào mừng trở lại Tech-Zone</p>
+                </div>
+                <div class="modal-body auth-modal-body">
+                    <form id="loginForm">
+                        <div class="form-group">
+                            <label for="login-email">Email</label>
+                            <input type="email" id="login-email" class="form-control form-control-dark" placeholder="email@example.com">
+                            <span class="error-msg" id="err-login-email"></span>
+                        </div>
+                        <div class="form-group">
+                            <label for="login-password">Mật khẩu</label>
+                            <div class="input-password-wrap">
+                                <input type="password" id="login-password" class="form-control form-control-dark" placeholder="Nhập mật khẩu">
+                                <button type="button" class="btn-toggle-pw" tabindex="-1"><span class="glyphicon glyphicon-eye-open"></span></button>
+                            </div>
+                            <span class="error-msg" id="err-login-pw"></span>
+                        </div>
+                        <div class="auth-options">
+                            <label class="checkbox-remember"><input type="checkbox" id="rememberMe"> Ghi nhớ đăng nhập</label>
+                            <a href="#" class="forgot-link" id="forgotPwLink">Quên mật khẩu?</a>
+                        </div>
+                        <button type="submit" class="btn-auth"><span class="glyphicon glyphicon-log-in"></span> Đăng nhập</button>
+                    </form>
+                    <div class="auth-divider"><span>hoặc</span></div>
+                    <div class="auth-switch">Chưa có tài khoản? <a href="#" id="switchToRegister">Đăng ký ngay</a></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- ===== REGISTER MODAL ===== -->
+    <div class="modal fade" id="registerModal" tabindex="-1" role="dialog">
+        <div class="modal-dialog auth-modal-dialog">
+            <div class="modal-content auth-modal-content">
+                <div class="modal-header auth-modal-header">
+                    <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
+                    <h4 class="modal-title">Tạo tài khoản</h4>
+                    <p>Tham gia cộng đồng Tech-Zone ngay hôm nay</p>
+                </div>
+                <div class="modal-body auth-modal-body">
+                    <form id="registerForm">
+                        <div class="form-group">
+                            <label for="reg-name">Họ và tên</label>
+                            <input type="text" id="reg-name" class="form-control form-control-dark" placeholder="Nguyễn Văn A">
+                            <span class="error-msg" id="err-reg-name"></span>
+                        </div>
+                        <div class="form-group">
+                            <label for="reg-email">Email</label>
+                            <input type="email" id="reg-email" class="form-control form-control-dark" placeholder="email@example.com">
+                            <span class="error-msg" id="err-reg-email"></span>
+                        </div>
+                        <div class="form-group">
+                            <label for="reg-phone">Số điện thoại</label>
+                            <input type="tel" id="reg-phone" class="form-control form-control-dark" placeholder="0901 234 567">
+                            <span class="error-msg" id="err-reg-phone"></span>
+                        </div>
+                        <div class="form-group">
+                            <label for="reg-password">Mật khẩu</label>
+                            <div class="input-password-wrap">
+                                <input type="password" id="reg-password" class="form-control form-control-dark" placeholder="Ít nhất 6 ký tự">
+                                <button type="button" class="btn-toggle-pw" tabindex="-1"><span class="glyphicon glyphicon-eye-open"></span></button>
+                            </div>
+                            <span class="error-msg" id="err-reg-pw"></span>
+                        </div>
+                        <div class="form-group">
+                            <label for="reg-confirm-pw">Xác nhận mật khẩu</label>
+                            <div class="input-password-wrap">
+                                <input type="password" id="reg-confirm-pw" class="form-control form-control-dark" placeholder="Nhập lại mật khẩu">
+                                <button type="button" class="btn-toggle-pw" tabindex="-1"><span class="glyphicon glyphicon-eye-open"></span></button>
+                            </div>
+                            <span class="error-msg" id="err-reg-cpw"></span>
+                        </div>
+                        <div class="form-group">
+                            <label class="checkbox-remember">
+                                <input type="checkbox" id="agreeTerms">
+                                Tôi đồng ý với <a href="#">Điều khoản sử dụng</a> của Tech-Zone
+                            </label>
+                            <span class="error-msg" id="err-reg-terms"></span>
+                        </div>
+                        <button type="submit" class="btn-auth"><span class="glyphicon glyphicon-user"></span> Tạo tài khoản</button>
+                    </form>
+                    <div class="auth-divider"><span>hoặc</span></div>
+                    <div class="auth-switch">Đã có tài khoản? <a href="#" id="switchToLogin">Đăng nhập</a></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/main.js"></script>
+</body>
+
+</html>
