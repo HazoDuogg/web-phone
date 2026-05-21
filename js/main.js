@@ -1,21 +1,27 @@
+// Prevent browser from silently restoring scroll position (causes fade-up elements to stay hidden)
+if ('scrollRestoration' in history) {
+    history.scrollRestoration = 'manual';
+}
+
+window.addEventListener('pageshow', function (e) {
+    if (e.persisted) {
+        window.location.reload();
+    }
+});
+
 $(document).ready(function () {
+    // Init carousel explicitly after a short delay to avoid Bootstrap race condition on first load
+    setTimeout(function () {
+        $('#mainCarousel').carousel({ interval: 4500, wrap: true });
+    }, 100);
+
     $('#mainCarousel .carousel-control').on('mousedown', function (e) {
         e.preventDefault();
     });
 
     $('#mainCarousel .carousel-control').on('click', function (e) {
-        e.stopImmediatePropagation(); // block Bootstrap's document-level handler
+        e.stopImmediatePropagation();
         $('#mainCarousel').carousel($(this).data('slide'));
-    });
-
-    var _scrollTop;
-    $(document).on('slide.bs.carousel', function () {
-        _scrollTop = $(window).scrollTop();
-    });
-    $(document).on('slid.bs.carousel', function () {
-        if (_scrollTop !== undefined) {
-            $(window).scrollTop(_scrollTop);
-        }
     });
 
     $(window).on('scroll', function () {
@@ -144,16 +150,40 @@ $(document).ready(function () {
     });
 
     function revealOnScroll() {
-        $('.fade-up').each(function () {
+        $('.fade-up:not(.visible)').each(function () {
             var elemTop = $(this).offset().top;
             var windowBottom = $(window).scrollTop() + $(window).height();
-            if (elemTop < windowBottom - 60) {
+            if (elemTop < windowBottom - 40) {
                 $(this).addClass('visible');
             }
         });
     }
-    $(window).on('scroll', revealOnScroll);
-    revealOnScroll();
+
+    if ('IntersectionObserver' in window) {
+        var fadeObserver = new IntersectionObserver(function (entries) {
+            entries.forEach(function (entry) {
+                if (entry.isIntersecting) {
+                    $(entry.target).addClass('visible');
+                    fadeObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.05, rootMargin: '0px 0px 60px 0px' });
+        $('.fade-up').each(function () { fadeObserver.observe(this); });
+    } else {
+        $(window).on('scroll', revealOnScroll);
+        revealOnScroll();
+    }
+
+    $(window).on('load', function () {
+        revealOnScroll();
+        setTimeout(revealOnScroll, 300);
+        setTimeout(revealOnScroll, 800);
+    });
+
+    // Hard fallback: reveal anything still hidden after 1.5s
+    setTimeout(function () {
+        $('.fade-up:not(.visible)').addClass('visible');
+    }, 1500);
 
     // ===== AUTH =====
     function showLoggedIn(user) {

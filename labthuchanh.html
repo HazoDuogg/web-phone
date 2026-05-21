@@ -4,13 +4,131 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Sản phẩm | Tech-Zone</title>
+    <title>Lab Thực Hành | Tech-Zone</title>
     <link rel="stylesheet" href="css/bootstrap.min.css" />
     <link rel="stylesheet" href="css/style.css" />
-    <title>Document</title>
+    <style>
+        .lab-hero {
+            padding-top: 60px;
+            background: linear-gradient(135deg, #eff6ff, #dbeafe);
+            padding-bottom: 48px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .lab-section {
+            background: var(--surface);
+            padding: 60px 0 80px;
+        }
+
+        .lab-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 28px 24px 24px;
+            height: 100%;
+            transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .lab-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent);
+            box-shadow: 0 10px 28px rgba(37, 99, 235, 0.12);
+        }
+
+        .lab-card-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 18px;
+            padding-bottom: 14px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .lab-num-badge {
+            width: 40px;
+            height: 40px;
+            background: var(--gradient);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Poppins', sans-serif;
+            font-size: 14px;
+            font-weight: 700;
+            color: #fff;
+            flex-shrink: 0;
+        }
+
+        .lab-card-title {
+            font-family: 'Poppins', sans-serif;
+            font-size: 15px;
+            font-weight: 700;
+            color: var(--text);
+            line-height: 1.3;
+            margin: 0;
+        }
+
+        .lab-links {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            flex: 1;
+        }
+
+        .lab-links li {
+            margin-bottom: 8px;
+        }
+
+        .lab-links li a {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--accent);
+            font-size: 14px;
+            font-weight: 600;
+            text-decoration: none;
+            padding: 6px 10px;
+            border-radius: 6px;
+            transition: background 0.2s, color 0.2s;
+        }
+
+        .lab-links li a::before {
+            content: '';
+            display: inline-block;
+            width: 6px;
+            height: 6px;
+            background: var(--accent);
+            border-radius: 50%;
+            flex-shrink: 0;
+            opacity: 0.7;
+        }
+
+        .lab-links li a:hover {
+            background: rgba(37, 99, 235, 0.08);
+            color: #1d4ed8;
+            text-decoration: none;
+        }
+
+        .lab-links li a:hover::before {
+            opacity: 1;
+        }
+
+        .lab-col {
+            margin-bottom: 28px;
+        }
+
+        .section-intro {
+            color: var(--muted);
+            font-size: 15px;
+            max-width: 560px;
+            margin: 0 auto 48px;
+        }
+    </style>
 </head>
 
-<body>
+<body data-spy="scroll" data-target="#mainNav" data-offset="70">
     <nav class="navbar navbar-default navbar-fixed-top" id="mainNav">
         <div class="container">
             <div class="navbar-header">
@@ -25,13 +143,15 @@
                 </a>
             </div>
             <div class="collapse navbar-collapse" id="navbarMain">
-                <ul class="nav navbar-nav navbar-right">
+                <ul class="nav navbar-nav navbar-main-links">
                     <li><a href="index.html#about">About</a></li>
                     <li><a href="index.html#services">Services</a></li>
                     <li><a href="index.html#portfolio">Portfolio</a></li>
                     <li><a href="index.html#pricing">Pricing</a></li>
                     <li><a href="index.html#contact">Contact</a></li>
-                    <li><a href="#">Lab Thực Hành</a></li>
+                    <li class="active"><a href="labthuchanh.html">Lab Thực Hành</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-auth-links">
                     <li class="nav-auth-show"><a href="#" class="btn-nav-login" data-toggle="modal"
                             data-target="#loginModal">Đăng nhập</a></li>
                     <li class="nav-auth-show"><a href="#" class="btn-nav-register" data-toggle="modal"
@@ -55,6 +175,304 @@
             </div>
         </div>
     </nav>
+
+    <!-- HERO BANNER -->
+    <div class="lab-hero">
+        <div class="container" style="padding-top:24px;">
+            <span class="section-label">Học liệu thực hành</span>
+            <h1 class="section-title" style="font-size:42px;">Lab <span>Thực Hành</span></h1>
+            <p style="color:var(--muted);font-size:15px;margin-top:8px;max-width:480px;">
+                Tổng hợp các bài thực hành từ Lab01 đến Lab07 — từ HTML cơ bản đến JavaScript nâng cao.
+            </p>
+            <ol class="breadcrumb" style="background:transparent;padding:10px 0 0;margin:0;">
+                <li><a href="index.html" style="color:var(--accent);">Trang chủ</a></li>
+                <li class="active" style="color:var(--muted);">Lab Thực Hành</li>
+            </ol>
+        </div>
+    </div>
+
+    <!-- LAB GRID -->
+    <section class="lab-section">
+        <div class="container">
+            <div class="text-center" style="margin-bottom:40px;">
+                <span class="section-label">Danh sách bài thực hành</span>
+                <h2 class="section-title">Các Lab <span>Thực Hành</span></h2>
+                <div class="divider center"></div>
+                <p class="section-intro">Nhấn vào từng bài để mở trực tiếp. Các bài bao gồm HTML, CSS, Layout và
+                    JavaScript.</p>
+            </div>
+            <div class="row">
+
+                <!-- Lab 01 -->
+                <div class="col-md-3 col-sm-6 lab-col">
+                    <div class="lab-card">
+                        <div class="lab-card-header">
+                            <div class="lab-num-badge">01</div>
+                            <h3 class="lab-card-title">HTML Cơ Bản</h3>
+                        </div>
+                        <ul class="lab-links">
+                            <li><a href="Lab01/Vi_du/lab1.1.html" target="_blank">Lab 1.1</a></li>
+                            <li><a href="Lab01/Vi_du/lab1.2.html" target="_blank">Lab 1.2</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Lab 02 -->
+                <div class="col-md-3 col-sm-6 lab-col">
+                    <div class="lab-card">
+                        <div class="lab-card-header">
+                            <div class="lab-num-badge">02</div>
+                            <h3 class="lab-card-title">Table &amp; List</h3>
+                        </div>
+                        <ul class="lab-links">
+                            <li><a href="Lab02/Vi_du_Lab01/lab2.1.html" target="_blank">Lab 2.1</a></li>
+                            <li><a href="Lab02/Vi_du_Lab01/lab2.2.html" target="_blank">Lab 2.2</a></li>
+                            <li><a href="Lab02/Vi_du_Lab01/lab2.3.html" target="_blank">Lab 2.3</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Lab 03 -->
+                <div class="col-md-3 col-sm-6 lab-col">
+                    <div class="lab-card">
+                        <div class="lab-card-header">
+                            <div class="lab-num-badge">03</div>
+                            <h3 class="lab-card-title">Frame &amp; Form</h3>
+                        </div>
+                        <ul class="lab-links">
+                            <li><a href="Lab03/Vi_du/lab3.1.html" target="_blank">Lab 3.1</a></li>
+                            <li><a href="Lab03/Vi_du/lab3.2.html" target="_blank">Lab 3.2</a></li>
+                            <li><a href="Lab03/Vi_du/lab3.3.html" target="_blank">Lab 3.3</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Lab 04 -->
+                <div class="col-md-3 col-sm-6 lab-col">
+                    <div class="lab-card">
+                        <div class="lab-card-header">
+                            <div class="lab-num-badge">04</div>
+                            <h3 class="lab-card-title">CSS Cơ Bản</h3>
+                        </div>
+                        <ul class="lab-links">
+                            <li><a href="Lab04/Vi_du/lab4.1.html" target="_blank">Lab 4.1</a></li>
+                            <li><a href="Lab04/Vi_du/lab4.2.html" target="_blank">Lab 4.2</a></li>
+                            <li><a href="Lab04/Vi_du/lab4.3.html" target="_blank">Lab 4.3</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Lab 05 -->
+                <div class="col-md-3 col-sm-6 lab-col">
+                    <div class="lab-card">
+                        <div class="lab-card-header">
+                            <div class="lab-num-badge">05</div>
+                            <h3 class="lab-card-title">Các Thuộc Tính CSS</h3>
+                        </div>
+                        <ul class="lab-links">
+                            <li><a href="Lab05/Vi_du/lab5.1.html" target="_blank">Lab 5.1</a></li>
+                            <li><a href="Lab05/Bai_2/lab5.3.html" target="_blank">Lab 5.3</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Lab 06 -->
+                <div class="col-md-3 col-sm-6 lab-col">
+                    <div class="lab-card">
+                        <div class="lab-card-header">
+                            <div class="lab-num-badge">06</div>
+                            <h3 class="lab-card-title">Layout Responsive CSS</h3>
+                        </div>
+                        <ul class="lab-links">
+                            <li><a href="Lab06/Bai_2_Minh_hoa_layout/lab6.1.html" target="_blank">Lab 6.1</a></li>
+                            <li><a href="Lab06/Bai_2_Minh_hoa_layout/lab6.2.html" target="_blank">Lab 6.2</a></li>
+                            <li><a href="Lab06/Bai_2_Minh_hoa_layout/lab6.3.html" target="_blank">Lab 6.3</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Lab 07 -->
+                <div class="col-md-3 col-sm-6 lab-col">
+                    <div class="lab-card">
+                        <div class="lab-card-header">
+                            <div class="lab-num-badge">07</div>
+                            <h3 class="lab-card-title">JavaScript</h3>
+                        </div>
+                        <ul class="lab-links">
+                            <li><a href="Lab07/demo_bai_2/lab7.1.html" target="_blank">Lab 7.1</a></li>
+                            <li><a href="Lab07/demo_bai_2/lab7.2.html" target="_blank">Lab 7.2</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer id="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4" style="margin-bottom:32px;">
+                    <div class="footer-brand">
+                        <img src="images/logoTechZone.png" alt="Tech-Zone"
+                            style="height:48px;width:auto;margin-bottom:12px;display:block;">
+                        <p>Hệ thống bán lẻ điện thoại và thiết bị điện tử hàng đầu Việt Nam.</p>
+                        <div class="social-links">
+                            <a class="social-btn" href="#"><span class="glyphicon glyphicon-thumbs-up"></span></a>
+                            <a class="social-btn" href="#"><span class="glyphicon glyphicon-retweet"></span></a>
+                            <a class="social-btn" href="#"><span class="glyphicon glyphicon-film"></span></a>
+                            <a class="social-btn" href="#"><span class="glyphicon glyphicon-camera"></span></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-2 footer-col" style="margin-bottom:32px;">
+                    <h5>Sản phẩm</h5>
+                    <ul>
+                        <li><a href="product.html">Điện thoại</a></li>
+                        <li><a href="product.html">Laptop</a></li>
+                        <li><a href="product.html">Tablet</a></li>
+                        <li><a href="product.html">Phụ kiện</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3 footer-col" style="margin-bottom:32px;">
+                    <h5>Dịch vụ</h5>
+                    <ul>
+                        <li><a href="service1.html">Bảo hành &amp; Sửa chữa</a></li>
+                        <li><a href="service2.html">Thu cũ đổi mới</a></li>
+                        <li><a href="service3.html">Trả góp 0%</a></li>
+                        <li><a href="about.html">Về Tech-Zone</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3 footer-col" style="margin-bottom:32px;">
+                    <h5>Lab Thực Hành</h5>
+                    <ul>
+                        <li><a href="Lab01/Vi_du/lab1.1.html" target="_blank">Lab 01 — HTML</a></li>
+                        <li><a href="Lab02/Vi_du_Lab01/lab2.1.html" target="_blank">Lab 02 — Table &amp; List</a></li>
+                        <li><a href="Lab04/Vi_du/lab4.1.html" target="_blank">Lab 04 — CSS cơ bản</a></li>
+                        <li><a href="Lab07/demo_bai_2/lab7.1.html" target="_blank">Lab 07 — Javascript</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="container">
+                <p>© 2026 Tech-Zone. Bản quyền thuộc về Tech-Zone Vietnam.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- LOGIN MODAL -->
+    <div class="modal fade" id="loginModal" tabindex="-1" role="dialog">
+        <div class="modal-dialog auth-modal-dialog">
+            <div class="modal-content auth-modal-content">
+                <div class="modal-header auth-modal-header">
+                    <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
+                    <h4 class="modal-title">Đăng nhập</h4>
+                    <p>Chào mừng trở lại Tech-Zone</p>
+                </div>
+                <div class="modal-body auth-modal-body">
+                    <form id="loginForm">
+                        <div class="form-group">
+                            <label for="login-email">Email</label>
+                            <input type="email" id="login-email" class="form-control form-control-dark"
+                                placeholder="email@example.com">
+                            <span class="error-msg" id="err-login-email"></span>
+                        </div>
+                        <div class="form-group">
+                            <label for="login-password">Mật khẩu</label>
+                            <div class="input-password-wrap">
+                                <input type="password" id="login-password" class="form-control form-control-dark"
+                                    placeholder="Nhập mật khẩu">
+                                <button type="button" class="btn-toggle-pw" tabindex="-1"><span
+                                        class="glyphicon glyphicon-eye-open"></span></button>
+                            </div>
+                            <span class="error-msg" id="err-login-pw"></span>
+                        </div>
+                        <div class="auth-options">
+                            <label class="checkbox-remember"><input type="checkbox" id="rememberMe"> Ghi nhớ đăng
+                                nhập</label>
+                            <a href="#" class="forgot-link" id="forgotPwLink">Quên mật khẩu?</a>
+                        </div>
+                        <button type="submit" class="btn-auth"><span class="glyphicon glyphicon-log-in"></span> Đăng
+                            nhập</button>
+                    </form>
+                    <div class="auth-divider"><span>hoặc</span></div>
+                    <div class="auth-switch">Chưa có tài khoản? <a href="#" id="switchToRegister">Đăng ký ngay</a></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- REGISTER MODAL -->
+    <div class="modal fade" id="registerModal" tabindex="-1" role="dialog">
+        <div class="modal-dialog auth-modal-dialog">
+            <div class="modal-content auth-modal-content">
+                <div class="modal-header auth-modal-header">
+                    <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
+                    <h4 class="modal-title">Tạo tài khoản</h4>
+                    <p>Tham gia cộng đồng Tech-Zone ngay hôm nay</p>
+                </div>
+                <div class="modal-body auth-modal-body">
+                    <form id="registerForm">
+                        <div class="form-group">
+                            <label for="reg-name">Họ và tên</label>
+                            <input type="text" id="reg-name" class="form-control form-control-dark"
+                                placeholder="Nguyễn Văn A">
+                            <span class="error-msg" id="err-reg-name"></span>
+                        </div>
+                        <div class="form-group">
+                            <label for="reg-email">Email</label>
+                            <input type="email" id="reg-email" class="form-control form-control-dark"
+                                placeholder="email@example.com">
+                            <span class="error-msg" id="err-reg-email"></span>
+                        </div>
+                        <div class="form-group">
+                            <label for="reg-phone">Số điện thoại</label>
+                            <input type="tel" id="reg-phone" class="form-control form-control-dark"
+                                placeholder="0901 234 567">
+                            <span class="error-msg" id="err-reg-phone"></span>
+                        </div>
+                        <div class="form-group">
+                            <label for="reg-password">Mật khẩu</label>
+                            <div class="input-password-wrap">
+                                <input type="password" id="reg-password" class="form-control form-control-dark"
+                                    placeholder="Ít nhất 6 ký tự">
+                                <button type="button" class="btn-toggle-pw" tabindex="-1"><span
+                                        class="glyphicon glyphicon-eye-open"></span></button>
+                            </div>
+                            <span class="error-msg" id="err-reg-pw"></span>
+                        </div>
+                        <div class="form-group">
+                            <label for="reg-confirm-pw">Xác nhận mật khẩu</label>
+                            <div class="input-password-wrap">
+                                <input type="password" id="reg-confirm-pw" class="form-control form-control-dark"
+                                    placeholder="Nhập lại mật khẩu">
+                                <button type="button" class="btn-toggle-pw" tabindex="-1"><span
+                                        class="glyphicon glyphicon-eye-open"></span></button>
+                            </div>
+                            <span class="error-msg" id="err-reg-cpw"></span>
+                        </div>
+                        <div class="form-group">
+                            <label class="checkbox-remember">
+                                <input type="checkbox" id="agreeTerms">
+                                Tôi đồng ý với <a href="#">Điều khoản sử dụng</a> của Tech-Zone
+                            </label>
+                            <span class="error-msg" id="err-reg-terms"></span>
+                        </div>
+                        <button type="submit" class="btn-auth"><span class="glyphicon glyphicon-user"></span> Tạo tài
+                            khoản</button>
+                    </form>
+                    <div class="auth-divider"><span>hoặc</span></div>
+                    <div class="auth-switch">Đã có tài khoản? <a href="#" id="switchToLogin">Đăng nhập</a></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/main.js"></script>
 </body>
 
 </html>

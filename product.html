@@ -216,8 +216,12 @@
             border-bottom: 1px solid rgba(255, 255, 255, 0.05);
         }
 
-        .cart-item-icon {
-            font-size: 28px;
+        .cart-item img {
+            width: 52px;
+            height: 52px;
+            object-fit: contain;
+            border-radius: 8px;
+            background: #f1f5f9;
             flex-shrink: 0;
         }
 
@@ -285,12 +289,15 @@
                 </a>
             </div>
             <div class="collapse navbar-collapse" id="navbarMain">
-                <ul class="nav navbar-nav navbar-right">
+                <ul class="nav navbar-nav navbar-main-links">
                     <li><a href="index.html#about">About</a></li>
                     <li><a href="index.html#services">Services</a></li>
                     <li><a href="index.html#portfolio">Portfolio</a></li>
                     <li><a href="index.html#pricing">Pricing</a></li>
                     <li><a href="index.html#contact">Contact</a></li>
+                    <li><a href="labthuchanh.html">Lab Thực Hành</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-auth-links">
                     <li class="nav-auth-show"><a href="#" class="btn-nav-login" data-toggle="modal"
                             data-target="#loginModal">Đăng nhập</a></li>
                     <li class="nav-auth-show"><a href="#" class="btn-nav-register" data-toggle="modal"
@@ -527,7 +534,13 @@
             { id: 12, name: 'Sạc nhanh Anker 140W GaN', cat: 'accessory', price: 890000, oldPrice: 1190000, icon: '🔌', img: 'images/sac-nhanh-anker-140w-gan.png', sale: '' },
         ];
 
-        var cart = [];
+        var cart = (function () {
+            try { return JSON.parse(localStorage.getItem('tz_cart')) || []; } catch (e) { return []; }
+        })();
+
+        function saveCart() {
+            try { localStorage.setItem('tz_cart', JSON.stringify(cart)); } catch (e) {}
+        }
 
         function fmt(n) {
             return n.toLocaleString('vi-VN') + ' đ';
@@ -576,13 +589,15 @@
             if (!p) return;
             var existing = cart.find(function (x) { return x.id === id; });
             if (existing) { existing.qty++; }
-            else { cart.push({ id: p.id, name: p.name, price: p.price, icon: p.icon, qty: 1 }); }
+            else { cart.push({ id: p.id, name: p.name, price: p.price, img: p.img, qty: 1 }); }
+            saveCart();
             renderCart();
             $('#cartPanel').addClass('open');
         }
 
         function removeFromCart(id) {
             cart = cart.filter(function (x) { return x.id !== id; });
+            saveCart();
             renderCart();
         }
 
@@ -597,8 +612,8 @@
                     total += item.price * item.qty;
                     count += item.qty;
                     html += '<div class="cart-item">';
-                    html += '<div class="cart-item-icon">' + item.icon + '</div>';
-                    html += '<div class="cart-item-name">' + item.name + ' x' + item.qty + '</div>';
+                    html += '<img src="' + item.img + '" alt="' + item.name + '" style="width:52px;height:52px;object-fit:contain;border-radius:8px;background:#f1f5f9;flex-shrink:0;">';
+                    html += '<div class="cart-item-name">' + item.name + ' <span style="color:var(--accent);font-weight:700;">x' + item.qty + '</span></div>';
                     html += '<div class="cart-item-price">' + fmt(item.price * item.qty) + '</div>';
                     html += '<button class="cart-item-rm" onclick="removeFromCart(' + item.id + ')">✕</button>';
                     html += '</div>';
@@ -606,13 +621,14 @@
             }
             $('#cartItems').html(html);
             $('#cartTotal').text('Tổng: ' + fmt(total));
-            $('#cartCount').text(count);
+            $('#cartCount').text(count > 0 ? count : '0');
         }
 
         function checkout() {
             if (cart.length === 0) { alert('Giỏ hàng trống!'); return; }
             alert('Cảm ơn bạn đã đặt hàng! Tech-Zone sẽ liên hệ trong 30 phút.');
             cart = [];
+            saveCart();
             renderCart();
             $('#cartPanel').removeClass('open');
         }
@@ -623,6 +639,11 @@
             $('#cartToggle').on('click', function () {
                 $('#cartPanel').toggleClass('open');
             });
+            renderCart();
+            // Mở giỏ hàng tự động nếu điều hướng từ trang chi tiết
+            if (new URLSearchParams(window.location.search).get('cart') === 'open') {
+                $('#cartPanel').addClass('open');
+            }
         });
     </script>
 </body>

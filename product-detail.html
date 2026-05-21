@@ -111,11 +111,13 @@
                 </a>
             </div>
             <div class="collapse navbar-collapse" id="navbarMain">
-                <ul class="nav navbar-nav navbar-right">
+                <ul class="nav navbar-nav navbar-main-links">
                     <li><a href="index.html#about">About</a></li>
                     <li><a href="index.html#services">Services</a></li>
                     <li><a href="product.html">Sản phẩm</a></li>
                     <li><a href="index.html#contact">Contact</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-auth-links">
                     <li class="nav-auth-show"><a href="#" class="btn-nav-login" data-toggle="modal" data-target="#loginModal">Đăng nhập</a></li>
                     <li class="nav-auth-show"><a href="#" class="btn-nav-register" data-toggle="modal" data-target="#registerModal">Đăng ký</a></li>
                     <li class="dropdown nav-user-show" style="display:none;">
@@ -513,7 +515,18 @@
             $(el).css({ background: 'rgba(0,212,255,0.1)', 'border-color': 'var(--accent)', color: 'var(--accent)' });
         }
         function buyNow() {
-            alert('Sản phẩm đã được thêm vào giỏ hàng! Tech-Zone sẽ liên hệ xác nhận đơn hàng sớm nhất.');
+            var params = new URLSearchParams(window.location.search);
+            var id = parseInt(params.get('id')) || 1;
+            var p = allProducts.find(function (x) { return x.id === id; });
+            if (!p) return;
+            var qty = parseInt($('#qty').val()) || 1;
+            var cart = [];
+            try { cart = JSON.parse(localStorage.getItem('tz_cart')) || []; } catch (e) {}
+            var existing = cart.find(function (x) { return x.id === p.id; });
+            if (existing) { existing.qty += qty; }
+            else { cart.push({ id: p.id, name: p.name, price: p.price, img: p.img, qty: qty }); }
+            try { localStorage.setItem('tz_cart', JSON.stringify(cart)); } catch (e) {}
+            window.location.href = 'product.html?cart=open';
         }
     </script>
 </body>
